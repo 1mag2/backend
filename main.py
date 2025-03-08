@@ -56,8 +56,8 @@ def update_hotel_all(
 @app.patch("/hotels/{hotel_id}")
 def update_hotel(
         hotel_id: int,
-        title: str | None = Query(None, description="Название отеля"),
-        name: str | None = Query(None)
+        title: str | None = Body(None, description="Название отеля"),
+        name: str | None = Body(None)
         ):
     global hotels
     for hotel in hotels:
