@@ -9,5 +9,4 @@ async def only_auth(
 
 @router.post("/logout")
 async def logout(response: Response):
-    # Удаляем куку с access_token
     response.delete_cookie("access_token")
