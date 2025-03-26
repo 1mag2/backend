@@ -23,3 +23,14 @@ async def add_booking(
     booking = await db.bookings.add(_booking_data)
     await db.commit()
     return {"status": "ok", "data": booking}
+
+
+
+@router.get("")
+async def get_all_bookings(db: DBDep):
+    return await db.bookings.get_all()
+
+@router.get("/me")
+async def get_me_bookings(user_id: UserIdDep, db: DBDep):
+    user = await db.users.get_one_or_none(id=user_id)
+    return await db.bookings.get_filtered(user)
